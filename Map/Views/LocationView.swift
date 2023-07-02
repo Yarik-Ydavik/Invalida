@@ -20,6 +20,18 @@ struct LocationView: View {
                 header
                     .padding()
                 Spacer()
+                
+                ZStack {
+                    
+                    LocationPreviewView(location: vm.mapLocation)
+                        .shadow(color: Color.black.opacity(0.3), radius: 20)
+                        .transition(
+                            .asymmetric(
+                                insertion: .move(edge: .trailing),
+                                removal: .move(edge: .leading)
+                            )
+                    )
+                }
             }
         }
     }

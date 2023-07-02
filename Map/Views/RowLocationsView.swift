@@ -14,7 +14,7 @@ struct RowLocationsView: View {
         List{
             ForEach(vm.locations) { location in
                 Button {
-                    vm.nextLocations(locations: location)
+                    vm.nextLocations(location: location)
                 } label: {
                     RowLocation(location: location)
                 }

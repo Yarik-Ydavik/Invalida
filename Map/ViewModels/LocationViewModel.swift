@@ -49,10 +49,24 @@ class LocationViewModel : ObservableObject {
     }
     
     // Переключаться на другую локацию
-    func nextLocations (locations : Location){
+    func nextLocations (location : Location){
         withAnimation(.easeInOut) {
-            mapLocation = locations
+            mapLocation = location
             showLocations = false
         }
+    }
+    
+    // Нажатие на кнопку далее у превью локации
+    func nextButtonClicked() {
+        guard let currentIndex = locations.firstIndex(where: {$0 == mapLocation}) else { return }
+        
+        let nextIndex = currentIndex + 1
+        guard locations.indices.contains(nextIndex) else {
+            guard let nextLocation = locations.first else { return }
+            nextLocations(location : nextLocation)
+            return
+        }
+        let nextLocation = locations[nextIndex]
+        nextLocations(location: nextLocation)
     }
 }
