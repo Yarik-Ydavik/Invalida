@@ -55,7 +55,6 @@ extension LocationView {
                             .padding()
                     }
             }
-           
             if vm.showLocations{
                 RowLocationsView()
             }
