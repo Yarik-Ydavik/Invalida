@@ -56,17 +56,18 @@ class LocationViewModel : ObservableObject {
         }
     }
     
+    
     // Нажатие на кнопку далее у превью локации
-    func nextButtonClicked() {
-        guard let currentIndex = locations.firstIndex(where: {$0 == mapLocation}) else { return }
-        
-        let nextIndex = currentIndex + 1
-        guard locations.indices.contains(nextIndex) else {
-            guard let nextLocation = locations.first else { return }
-            nextLocations(location : nextLocation)
-            return
+    func nextButtonClicked(location : Location) {
+        print (location)
+        // Получить текущий индекс выбранной локации
+        if let currentIndex = locations.firstIndex(where: { $0.id == location.id }){
+            mapLocation = locations[(currentIndex + 1)==locations.count ? 0 : currentIndex + 1]
+            print(currentIndex)
         }
-        let nextLocation = locations[nextIndex]
-        nextLocations(location: nextLocation)
+        
+        // Вызвать функцию updateLocation с новым значением
+        updateLocation(location: mapLocation)
     }
+
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D718D13E2A53EDD300DE5F20 /* MarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D718D13D2A53EDD300DE5F20 /* MarkerView.swift */; };
 		D770419F2A4F5C9F0042F9DC /* MapApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D770419E2A4F5C9F0042F9DC /* MapApp.swift */; };
 		D77041A62A4F5CA00042F9DC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D77041A52A4F5CA00042F9DC /* Preview Assets.xcassets */; };
 		D77041B02A4F5CA00042F9DC /* MapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77041AF2A4F5CA00042F9DC /* MapTests.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D718D13D2A53EDD300DE5F20 /* MarkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkerView.swift; sourceTree = "<group>"; };
 		D770419B2A4F5C9F0042F9DC /* Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Map.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D770419E2A4F5C9F0042F9DC /* MapApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapApp.swift; sourceTree = "<group>"; };
 		D77041A52A4F5CA00042F9DC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 				D77041D32A4F6FC60042F9DC /* LocationView.swift */,
 				D7A0B8CB2A504BB20058B431 /* RowLocationsView.swift */,
 				D79DC4082A513DE100AD4118 /* LocationPreviewView.swift */,
+				D718D13D2A53EDD300DE5F20 /* MarkerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -238,7 +241,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					D770419A2A4F5C9F0042F9DC = {
 						CreatedOnToolsVersion = 14.3.1;
@@ -304,6 +307,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D718D13E2A53EDD300DE5F20 /* MarkerView.swift in Sources */,
 				D7A0B8CC2A504BB20058B431 /* RowLocationsView.swift in Sources */,
 				D77041D62A4F6FDD0042F9DC /* LocationViewModel.swift in Sources */,
 				D770419F2A4F5C9F0042F9DC /* MapApp.swift in Sources */,
@@ -383,6 +387,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -443,6 +448,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -477,6 +483,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -506,6 +513,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

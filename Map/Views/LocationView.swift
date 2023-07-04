@@ -10,10 +10,19 @@ import MapKit
 
 struct LocationView: View {
     @EnvironmentObject private var vm : LocationViewModel
-        
     var body: some View {
         ZStack{
-            Map(coordinateRegion: $vm.mapRegion)
+    
+            Map(
+                coordinateRegion: $vm.mapRegion,
+                annotationItems: vm.locations,
+                annotationContent: { Location in
+                    MapAnnotation(coordinate: Location.coordinates) {
+                        MarkerView()
+                            .scaleEffect(Location.id == vm.mapLocation.id ? 1.5 : 1.0)
+                    }
+                }
+            )
                 .edgesIgnoringSafeArea(.all)
             
             VStack(spacing: 0) {
@@ -22,15 +31,8 @@ struct LocationView: View {
                 Spacer()
                 
                 ZStack {
-                    
                     LocationPreviewView(location: vm.mapLocation)
                         .shadow(color: Color.black.opacity(0.3), radius: 20)
-                        .transition(
-                            .asymmetric(
-                                insertion: .move(edge: .trailing),
-                                removal: .move(edge: .leading)
-                            )
-                    )
                 }
             }
         }
@@ -48,6 +50,7 @@ extension LocationView {
     
     private var header : some View{
         VStack {
+            
             Button {
                 vm.showLocationsList()
             } label: {
