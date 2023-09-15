@@ -10,22 +10,6 @@ import MapKit
 import SwiftUI
 
 class LocationViewModel : ObservableObject {
-//    let point1 = CLLocationCoordinate2DMake(-73.761105, 41.017791);
-//    let point2 = CLLocationCoordinate2DMake(-73.760701, 41.019348);
-//    let point3 = CLLocationCoordinate2DMake(-73.757201, 41.019267);
-//    let point4 = CLLocationCoordinate2DMake(-73.757482, 41.016375);
-//    let point5 = CLLocationCoordinate2DMake(-73.761105, 41.017791);
-//    
-//    var points: [CLLocationCoordinate2D] = []
-//    var geodesic: MKGeodesicPolyline?
-
-    
-    
-    
-    
-    
-    
-    
     @Published var locations : [Location]
     
     @Published var mapLocation : Location {
@@ -43,8 +27,6 @@ class LocationViewModel : ObservableObject {
         self.locations = locations
         self.mapLocation = locations.first!
         updateLocation(location: locations.first!)
-//        points = [point1 , point2, point3, point4, point5]
-//        geodesic = MKGeodesicPolyline(coordinates: points , count: 5)
 
     }
     
