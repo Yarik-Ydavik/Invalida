@@ -10,20 +10,24 @@ import SwiftUI
 @main
 struct MapApp: App {
     
-    @StateObject private var vm = LocationViewModel()
-    @StateObject private var vmLogi = LoginViewModel()
+    @StateObject private var vmLogi = UserViewModel()
     
-    @AppStorage("tokenAuth") var token: String?
-        
     var body: some Scene {
         WindowGroup {
-            if token != nil {
-                EventView()
-                    .environmentObject(vm)
+            if vmLogi.tokensAuthorization.first?.accessToken != nil {
+                if vmLogi.tokensAuthorization.first?.role == 3 {
+                    EventOrganizView()
+                        .environmentObject(vmLogi)
+                }else {
+                    EventView()
+                        .environmentObject(vmLogi)
+                }
             } else {
                 AuthView()
                     .environmentObject(vmLogi)
             }
+
+            
         }
     }
 

@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct LocationPreviewView: View {
-    @EnvironmentObject private var vm : LocationViewModel
+    @EnvironmentObject private var vm : LocationManager
     
-    let location: Location
+    let location: CreateEventResponse
     var body: some View {
         HStack (alignment: .bottom){
             VStack(alignment: .leading, spacing: 16){
@@ -40,10 +40,9 @@ struct LocationPreviewView: View {
 struct LocationPreviewView_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
-            Color.blue
-                .ignoresSafeArea()
-            LocationPreviewView(location:LocationsDataService.locations.first!)
-                .environmentObject(LocationViewModel())
+            LocationPreviewView(location: LocationManager().locations.first!)
+                .environmentObject(LocationManager())
+            
         }
     }
 }
@@ -51,11 +50,19 @@ struct LocationPreviewView_Previews: PreviewProvider {
 extension LocationPreviewView{
     private var imageLocation : some View{
         ZStack {
-            Image(location.imageNames.first!)
-                .resizable()
-                .scaledToFill()
-                .frame(width: 100, height: 100)
-            .cornerRadius(10)
+            if let Imagr = vm.eventImages[location.id] {
+                Image(uiImage: Imagr)
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 100, height: 100)
+                    .cornerRadius(10)
+            } else {
+                Image("image")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 100, height: 100)
+                    .cornerRadius(10)
+            }
         }
         .padding(6)
         .background(Color.white)

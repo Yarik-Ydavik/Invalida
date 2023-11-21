@@ -6,61 +6,74 @@
 //
 
 import SwiftUI
+import MapKit
+import CoreLocation
 
 struct EventView: View {
-    @EnvironmentObject private var vm : LocationViewModel
-    @State private var selection: String = "home"
-    @State private var planet: Bool = true
-
+    @StateObject var locManager: LocationManager = .init()
     
+    @State private var selection: String? = "home"
+    
+    @EnvironmentObject var vmLogi: UserViewModel
     var body: some View {
         
         TabView (selection: $selection) {
             NavigationStack {
                 VStack{
-                    if planet {
-                        RowLocationsView()
-                            .navigationTitle("Список мероприятий")
+                    if !locManager.locations.isEmpty{
+                        if !locManager.planet {
+                            ListHomeView()
+                                .environmentObject(locManager)
+                                .navigationTitle("Список мероприятий")
+                        } else {
+                            LocationView()
+                                .environmentObject(locManager)
+                        }
                     } else {
-                        LocationView(planet: $planet)
-                            .navigationTitle("")
+                        ListHomeView()
+                            .environmentObject(locManager)
+                            .navigationTitle("Список мероприятий")
                     }
+                    
                 }
                 .overlay(alignment: .topTrailing) {
-                    Button {
-                        planet.toggle()
-                    } label: {
-                        Image(systemName: planet ? "globe.americas" : "globe.americas.fill")
-                            .padding()
-                            .font(.title2)
-                            .bold()
-                            .foregroundColor(.primary)
-                            .background(.thickMaterial)
-                            .cornerRadius(15)
-                            .padding()
-                    }
+                    Image(systemName: locManager.planet ? "globe.americas.fill" : "globe.americas" )
+                        .padding()
+                        .font(.title3)
+                        .bold()
+                        .foregroundColor(.primary)
+                        .background(.thickMaterial)
+                        .cornerRadius(15)
+                        .padding()
+                        .onTapGesture {
+                            withAnimation {
+                                if !locManager.locations.isEmpty {
+                                    locManager.planet.toggle()
+
+                                }
+                            }
+                        }
+                        .shadow(color: locManager.planet ? Color.black.opacity(0.3) : Color.clear, radius: 15, x: 10, y: 15)
                 }
             }.tabItem {
                 Image( systemName: "house")
                 Text ("Главная")
             }
-            
-            Color.white
-                .ignoresSafeArea(edges: .top)
-                .tabItem {
-                    Image( systemName: "person")
-                    Text ("Профиль")
-                }
+
+            ProfileView()
+                .environmentObject(vmLogi)
+            .tabItem {
+                Image (systemName: "person.crop.square")
+                Text ("Профиль")
+            }
         }
         .onAppear(){
-            UITabBar.appearance().backgroundColor = .white
+             UITabBar.appearance().backgroundColor = .white
         }
+        
     }
-    
-
 }
-
 #Preview {
     EventView()
-        .environmentObject(LocationViewModel())
+        .environmentObject(LocationManager())
 }

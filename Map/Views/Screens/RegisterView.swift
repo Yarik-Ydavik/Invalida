@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RegisterView: View {
     @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject private var loginVM : LoginViewModel
+    @EnvironmentObject private var loginVM : UserViewModel
     
     @State var rol: String = "Роль"
     
@@ -87,6 +87,6 @@ struct RegisterView: View {
 
 #Preview {
     RegisterView()
-        .environmentObject(LoginViewModel())
+        .environmentObject(UserViewModel())
 
 }

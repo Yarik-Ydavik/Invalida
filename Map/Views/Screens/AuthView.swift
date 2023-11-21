@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AuthView: View {
-    @EnvironmentObject private var loginVM : LoginViewModel
+    @EnvironmentObject private var loginVM : UserViewModel
     
     var body: some View {
         NavigationStack {
@@ -51,5 +51,5 @@ struct AuthView: View {
 
 #Preview {
     AuthView()
-        .environmentObject(LoginViewModel())
+        .environmentObject(UserViewModel())
 }
